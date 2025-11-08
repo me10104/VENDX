@@ -8,12 +8,10 @@ import Home from "./pages/Home";
 
 function Router() {
   return (
-    <WouterRouter>
+    <WouterRouter base="/VENDX">
       <Switch>
         <Route path={"/"} component={Home} />
-        <Route path={"/404"} component={NotFound} />
-        {/* Final fallback route */}
-        <Route component={NotFound} />
+        <Route path={"/:rest*"} component={Home} />
       </Switch>
     </WouterRouter>
   );
