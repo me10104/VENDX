@@ -122,7 +122,7 @@ export default function Home() {
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               Discord サーバーを
               <br />
-              <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
                 もっと便利に
               </span>
             </h1>
