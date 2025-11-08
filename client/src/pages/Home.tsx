@@ -1,16 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useState, useEffect } from "react";
 
 export default function Home() {
   const inviteUrl = "https://discord.com/oauth2/authorize?client_id=1422959102300127292&permissions=8&integration_type=0&scope=bot";
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const features = [
     {
@@ -104,64 +96,31 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
-      {/* Animated Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div 
-          className="absolute top-20 left-10 w-64 h-64 bg-purple-300/20 rounded-full blur-3xl animate-pulse"
-          style={{animationDuration: '4s', transform: `translateY(${scrollY * 0.3}px)`}}
-        ></div>
-        <div 
-          className="absolute top-40 right-20 w-96 h-96 bg-pink-300/20 rounded-full blur-3xl animate-pulse"
-          style={{animationDuration: '5s', transform: `translateY(${scrollY * 0.2}px)`}}
-        ></div>
-        <div 
-          className="absolute bottom-20 left-1/3 w-80 h-80 bg-blue-300/20 rounded-full blur-3xl animate-pulse"
-          style={{animationDuration: '6s', transform: `translateY(${scrollY * -0.1}px)`}}
-        ></div>
-        
-        {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-purple-400/30 rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${10 + Math.random() * 10}s`
-            }}
-          ></div>
-        ))}
-      </div>
-
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
       {/* Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-purple-200/50 shadow-sm">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex h-16 sm:h-20 items-center justify-between">
             <div className="flex items-center gap-3 sm:gap-4">
-              <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-75 blur animate-pulse"></div>
-                <img 
-                  src="/VENDX/bot-icon.jpg" 
-                  alt="VENDX" 
-                  className="relative h-10 w-10 sm:h-12 sm:w-12 rounded-full ring-2 ring-white shadow-lg"
-                />
-              </div>
-              <span className="text-xl sm:text-2xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <img 
+                src="/VENDX/bot-icon.jpg" 
+                alt="VENDX" 
+                className="h-10 w-10 sm:h-12 sm:w-12 rounded-full"
+              />
+              <span className="text-xl sm:text-2xl font-bold text-purple-600">
                 VENDX
               </span>
             </div>
             <nav className="hidden md:flex items-center gap-6">
-              <a href="#commands" className="text-sm font-semibold text-gray-700 hover:text-purple-600 transition">
+              <a href="#commands" className="text-sm font-medium text-gray-700 hover:text-purple-600">
                 コマンド
               </a>
-              <a href="#features" className="text-sm font-semibold text-gray-700 hover:text-purple-600 transition">
+              <a href="#features" className="text-sm font-medium text-gray-700 hover:text-purple-600">
                 機能
               </a>
               <Button 
                 asChild 
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold shadow-lg hover:shadow-xl transition-all"
+                className="bg-purple-600 hover:bg-purple-700 text-white"
               >
                 <a href={inviteUrl} target="_blank" rel="noopener noreferrer">
                   BOTを導入
@@ -171,7 +130,7 @@ export default function Home() {
             <Button 
               asChild 
               size="sm"
-              className="md:hidden bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold"
+              className="md:hidden bg-purple-600 hover:bg-purple-700 text-white"
             >
               <a href={inviteUrl} target="_blank" rel="noopener noreferrer">
                 導入
@@ -182,27 +141,22 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative container mx-auto px-4 sm:px-6 py-20 sm:py-32">
-        <div className="relative z-10 flex flex-col items-center text-center">
-          <div className="space-y-8 sm:space-y-12 max-w-4xl">
-            <div className="space-y-6">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight">
-                <span className="block text-gray-800 mb-2">Discord サーバーを</span>
-                <span className="block bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
-                  もっと便利に
-                </span>
-              </h1>
-              <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed">
-                VENDXは自販機システム、PayPay連携、チケット管理など、<br className="hidden sm:block" />
-                サーバー運営に必要な機能を統合したDiscord BOTです
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <section className="container mx-auto px-4 sm:px-6 py-20 sm:py-32">
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+          <div className="space-y-6 sm:space-y-8">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+              Discord サーバーを<br />
+              <span className="text-purple-600">もっと便利に</span>
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
+              VENDXは自販機システム、PayPay連携、チケット管理など、<br className="hidden sm:block" />
+              サーバー運営に必要な機能を統合したDiscord BOTです
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button 
                 size="lg" 
                 asChild 
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold text-base sm:text-lg px-8 py-6 sm:py-7 shadow-2xl hover:shadow-purple-500/50 transition-all transform hover:scale-105"
+                className="bg-purple-600 hover:bg-purple-700 text-white text-base sm:text-lg px-8 py-6"
               >
                 <a href={inviteUrl} target="_blank" rel="noopener noreferrer">
                   今すぐ導入する
@@ -212,7 +166,7 @@ export default function Home() {
                 size="lg" 
                 variant="outline" 
                 asChild 
-                className="border-2 border-purple-300 text-purple-700 hover:bg-purple-50 font-bold text-base sm:text-lg px-8 py-6 sm:py-7"
+                className="border-purple-600 text-purple-600 hover:bg-purple-50 text-base sm:text-lg px-8 py-6"
               >
                 <a href="#commands">
                   コマンドを見る
@@ -224,28 +178,24 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="relative py-20 sm:py-32">
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="text-center mb-12 sm:mb-20 space-y-4">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              主な機能
-            </h2>
-          </div>
+      <section id="features" className="py-20 sm:py-32 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center text-gray-900 mb-12 sm:mb-16">
+            主な機能
+          </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {features.map((feature, idx) => (
               <div 
                 key={idx}
-                className="group relative p-6 sm:p-8 rounded-3xl bg-white/80 backdrop-blur-xl border-2 border-purple-200/50 hover:border-purple-400 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 transform hover:-translate-y-2"
+                className="p-6 sm:p-8 rounded-2xl bg-white border border-gray-200 hover:border-purple-300 hover:shadow-lg transition"
               >
-                <div className="space-y-4">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-800">{feature.title}</h3>
-                  <p className="text-base sm:text-lg font-semibold text-purple-600">{feature.description}</p>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{feature.detail}</p>
-                  {feature.note && (
-                    <p className="text-xs sm:text-sm text-gray-500 italic">{feature.note}</p>
-                  )}
-                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-base font-semibold text-purple-600 mb-3">{feature.description}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{feature.detail}</p>
+                {feature.note && (
+                  <p className="text-xs text-gray-500 mt-3">{feature.note}</p>
+                )}
               </div>
             ))}
           </div>
@@ -253,30 +203,25 @@ export default function Home() {
       </section>
 
       {/* Commands Section */}
-      <section id="commands" className="relative py-20 sm:py-32 bg-gradient-to-b from-transparent via-white/50 to-transparent">
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="text-center mb-12 sm:mb-20 space-y-4">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              コマンド一覧
-            </h2>
-          </div>
+      <section id="commands" className="py-20 sm:py-32">
+        <div className="container mx-auto px-4 sm:px-6">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center text-gray-900 mb-12 sm:mb-16">
+            コマンド一覧
+          </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {commandCategories.map((category, idx) => (
-              <Card 
-                key={idx}
-                className="bg-white/80 backdrop-blur-xl border-2 border-purple-200/50 hover:border-purple-400 shadow-lg hover:shadow-xl transition-all"
-              >
+              <Card key={idx} className="border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-xl sm:text-2xl font-bold text-gray-800">{category.category}</CardTitle>
+                  <CardTitle className="text-xl font-bold text-gray-900">{category.category}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
                   {category.items.map((item, itemIdx) => (
                     <div 
                       key={itemIdx}
-                      className="group p-3 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 border border-purple-200/50 hover:border-purple-300 transition-all"
+                      className="p-3 rounded-lg bg-purple-50 border border-purple-100"
                     >
-                      <code className="text-sm font-mono font-bold text-purple-700">{item.name}</code>
+                      <code className="text-sm font-mono font-semibold text-purple-700">{item.name}</code>
                       <p className="text-xs text-gray-600 mt-1">{item.desc}</p>
                     </div>
                   ))}
@@ -288,19 +233,19 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-20 sm:py-32">
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-12 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-purple-500 to-pink-500 shadow-2xl">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+      <section className="py-20 sm:py-32 bg-purple-600">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
               今すぐVENDXを導入しよう
             </h2>
-            <p className="text-lg sm:text-xl text-white/90">
+            <p className="text-lg sm:text-xl text-purple-100">
               あなたのDiscordサーバーを次のレベルへ
             </p>
             <Button 
               size="lg" 
               asChild 
-              className="bg-white text-purple-600 hover:bg-gray-100 font-black text-lg sm:text-xl px-10 sm:px-12 py-7 sm:py-8 shadow-2xl hover:shadow-white/50 transition-all transform hover:scale-105"
+              className="bg-white text-purple-600 hover:bg-gray-100 text-lg px-10 py-7"
             >
               <a href={inviteUrl} target="_blank" rel="noopener noreferrer">
                 BOTを導入する
@@ -311,25 +256,25 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="relative border-t-2 border-purple-200/50 py-12 sm:py-16 bg-white/70 backdrop-blur-xl">
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="flex flex-col items-center space-y-6 sm:space-y-8">
+      <footer className="border-t border-gray-200 py-12 sm:py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex flex-col items-center space-y-6">
             <div className="flex items-center gap-4">
               <img 
                 src="/VENDX/creator-icon.jpg" 
                 alt="Creator" 
-                className="h-10 w-10 sm:h-12 sm:w-12 rounded-full ring-2 ring-purple-300 shadow-lg"
+                className="h-10 w-10 sm:h-12 sm:w-12 rounded-full"
               />
-              <span className="text-sm sm:text-base text-gray-700 font-semibold">Built by @me10104</span>
+              <span className="text-sm sm:text-base text-gray-600">Built by @me10104</span>
             </div>
             
-            <div className="text-center space-y-3">
-              <p className="text-lg sm:text-xl font-bold text-gray-800">VENDX Discord BOT</p>
+            <div className="text-center space-y-2">
+              <p className="text-lg font-bold text-gray-900">VENDX Discord BOT</p>
               <a 
                 href="https://discord.gg/3bw5D6vKV9" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-block text-sm sm:text-base text-purple-600 hover:text-pink-600 transition font-bold"
+                className="inline-block text-sm text-purple-600 hover:text-purple-700 font-semibold"
               >
                 サポートサーバー
               </a>
