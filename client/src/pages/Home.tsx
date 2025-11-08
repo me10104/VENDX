@@ -117,8 +117,8 @@ export default function Home() {
           <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-secondary/25 rounded-full animate-ping" style={{animationDuration: '5s'}} />
           <div className="absolute top-2/3 right-1/4 w-3 h-3 bg-primary/20 rounded-full animate-pulse" style={{animationDuration: '3.5s'}} />
         </div>
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+        <div className="flex flex-col items-center text-center">
+          <div className="space-y-6 max-w-4xl">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               Discord サーバーを
               <br />
@@ -126,10 +126,10 @@ export default function Home() {
                 もっと便利に
               </span>
             </h1>
-            <p className="text-lg text-muted-foreground max-w-xl">
+            <p className="text-lg text-muted-foreground">
               VENDXは自販機システム、PayPay連携、チケット管理など、サーバー運営に必要な機能を統合したDiscord BOTです。
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild className="shadow-lg hover:shadow-xl transition-shadow">
                 <a href={inviteUrl} target="_blank" rel="noopener noreferrer">
                   今すぐ導入する
@@ -141,16 +141,6 @@ export default function Home() {
                 </a>
               </Button>
             </div>
-          </div>
-          <div className="relative">
-            <div className="floating">
-              <img 
-                src="/bot-icon.jpg" 
-                alt="VENDX Bot" 
-                className="w-full max-w-md mx-auto rounded-3xl shadow-2xl"
-              />
-            </div>
-            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
           </div>
         </div>
       </section>
@@ -262,7 +252,10 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-border/50 py-8 glass-effect">
         <div className="container text-center text-sm text-muted-foreground">
-          <p>Built by @me10104</p>
+          <div className="flex items-center justify-center gap-3">
+            <img src="/creator-icon.jpg" alt="Creator" className="h-8 w-8 rounded-full" />
+            <p>Built by @me10104</p>
+          </div>
           <p className="mt-2">VENDX Discord BOT</p>
         </div>
       </footer>
