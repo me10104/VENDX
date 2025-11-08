@@ -52,29 +52,29 @@
   --chart-3: oklch(0.7 0.18 340);
   --chart-4: oklch(0.65 0.2 280);
   --chart-5: oklch(0.6 0.22 260);
-  --radius: 1rem;
-  --background: oklch(0.98 0.02 300);
-  --foreground: oklch(0.25 0.02 280);
-  --card: oklch(0.97 0.015 310);
-  --card-foreground: oklch(0.25 0.02 280);
-  --popover: oklch(0.96 0.02 320);
-  --popover-foreground: oklch(0.25 0.02 280);
-  --secondary: oklch(0.85 0.08 320);
-  --secondary-foreground: oklch(0.25 0.02 280);
-  --muted: oklch(0.92 0.03 300);
-  --muted-foreground: oklch(0.5 0.02 280);
-  --accent: oklch(0.88 0.1 300);
-  --accent-foreground: oklch(0.25 0.02 280);
-  --destructive: oklch(0.6 0.2 20);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.88 0.04 300);
-  --input: oklch(0.88 0.04 300);
+  --secondary: oklch(0.95 0.01 320);
+  --secondary-foreground: oklch(0.2 0.01 320);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.15 0.005 320);
+  --card: oklch(0.98 0.005 320);
+  --card-foreground: oklch(0.15 0.005 320);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.005 320);
+  --muted: oklch(0.96 0.005 320);
+  --muted-foreground: oklch(0.55 0.015 320);
+  --accent: oklch(0.96 0.005 320);
+  --accent-foreground: oklch(0.2 0.01 320);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0 0 0 / 10%);
+  --input: oklch(0 0 0 / 15%);
   --ring: oklch(0.75 0.15 320);
-  --sidebar: oklch(0.97 0.015 310);
-  --sidebar-foreground: oklch(0.25 0.02 280);
-  --sidebar-accent: oklch(0.88 0.1 300);
-  --sidebar-accent-foreground: oklch(0.25 0.02 280);
-  --sidebar-border: oklch(0.88 0.04 300);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.98 0.005 320);
+  --sidebar-foreground: oklch(0.15 0.005 320);
+  --sidebar-accent: oklch(0.96 0.005 320);
+  --sidebar-accent-foreground: oklch(0.2 0.01 320);
+  --sidebar-border: oklch(0 0 0 / 10%);
   --sidebar-ring: oklch(0.75 0.15 320);
 }
 
@@ -134,24 +134,11 @@
 }
 
 @layer components {
-  /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
-   */
   .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
+    padding-left: 1rem;
     padding-right: 1rem;
   }
 
@@ -162,16 +149,16 @@
 
   @media (min-width: 640px) {
     .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
   }
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem; /* 32px - desktop padding */
+      padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
+      max-width: 1280px;
     }
   }
 
@@ -197,90 +184,135 @@
       transform: translateY(-10px);
     }
   }
-}
-/* VENDX PRO Premium Styles */
-.pro-gradient-bg {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1410 50%, #0f0f0f 100%);
-  position: relative;
-}
 
-.pro-gradient-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-              radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.pro-glass-effect {
-  background: rgba(10, 10, 10, 0.7);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-}
-
-.pro-gradient-text {
-  background: linear-gradient(135deg, #d4af37 0%, #f4e5b0 50%, #d4af37 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 3s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-  0%, 100% {
-    background-position: 0% 50%;
+  /* VENDX PRO Premium Styles - Completely Redesigned */
+  .pro-gradient-text {
+    background: linear-gradient(135deg, #d4af37 0%, #f4e5b0 50%, #d4af37 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
-  50% {
+
+  .pro-gradient-text-animated {
+    background: linear-gradient(135deg, #d4af37 0%, #f4e5b0 25%, #fff9e6 50%, #f4e5b0 75%, #d4af37 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .pro-card-3d {
+    position: relative;
+    background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(25, 25, 25, 0.9) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.1);
+  }
+
+  .pro-card-3d:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2), 0 0 0 1px rgba(212, 175, 55, 0.3);
+  }
+
+  .pro-command-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(20, 20, 20, 0.85) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(16px);
+  }
+
+  .pro-command-card:hover {
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.15);
+  }
+
+  .pro-button-premium {
+    background: linear-gradient(135deg, #d4af37 0%, #f4e5b0 50%, #d4af37 100%);
+    background-size: 200% 200%;
+    color: #000;
+    font-weight: 700;
+    border: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pro-button-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .pro-button-premium:hover::before {
+    left: 100%;
+  }
+
+  .pro-button-premium:hover {
     background-position: 100% 50%;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6), 0 0 60px rgba(212, 175, 55, 0.4);
   }
-}
 
-.pro-card {
-  background: rgba(15, 15, 15, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  transition: all 0.3s ease;
-}
+  .pro-button-outline-premium {
+    background: transparent;
+    color: #d4af37;
+    border: 2px solid #d4af37;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
 
-.pro-card:hover {
-  background: rgba(20, 20, 20, 0.9);
-  border-color: rgba(212, 175, 55, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.15);
-}
+  .pro-button-outline-premium::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+  }
 
-.pro-button {
-  background: linear-gradient(135deg, #d4af37 0%, #f4e5b0 50%, #d4af37 100%);
-  color: #0a0a0a;
-  font-weight: 600;
-  border: none;
-  transition: all 0.3s ease;
-}
+  .pro-button-outline-premium:hover::before {
+    width: 300%;
+    height: 300%;
+  }
 
-.pro-button:hover {
-  background: linear-gradient(135deg, #f4e5b0 0%, #d4af37 50%, #f4e5b0 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
-}
+  .pro-button-outline-premium:hover {
+    border-color: #f4e5b0;
+    color: #f4e5b0;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
 
-.pro-button-outline {
-  background: transparent;
-  color: #d4af37;
-  border: 2px solid #d4af37;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.pro-button-outline:hover {
-  background: rgba(212, 175, 55, 0.1);
-  border-color: #f4e5b0;
-  color: #f4e5b0;
-  transform: translateY(-1px);
-}
-
-@theme {
-  --color-gold: #d4af37;
-  --color-gold-light: #f4e5b0;
-  --color-gold-dark: #b8941f;
+  @theme {
+    --color-gold: #d4af37;
+    --color-gold-light: #f4e5b0;
+    --color-gold-dark: #b8941f;
+  }
 }
