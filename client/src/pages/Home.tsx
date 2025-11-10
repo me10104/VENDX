@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import { commandsData } from "../commands-data";
 
 type Edition = "standard" | "pro";
 
 export default function Home() {
   const [edition, setEdition] = useState<Edition>("standard");
   const [scrollY, setScrollY] = useState(0);
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   
   const inviteUrl = "https://discord.com/oauth2/authorize?client_id=1422959102300127292&permissions=8&integration_type=0&scope=bot";
 
@@ -17,6 +19,10 @@ export default function Home() {
 
   const toggleEdition = () => {
     setEdition(prev => prev === "standard" ? "pro" : "standard");
+  };
+
+  const toggleCategory = (categoryName: string) => {
+    setExpandedCategory(prev => prev === categoryName ? null : categoryName);
   };
 
   const config = {
@@ -72,6 +78,17 @@ export default function Home() {
 
   const current = config[edition];
   const opacity = Math.min(scrollY / 300, 1);
+
+  const categories = [
+    { name: "自販機", count: commandsData["自販機"].length },
+    { name: "パネル", count: commandsData["パネル"].length },
+    { name: "モデレーション", count: commandsData["モデレーション"].length },
+    { name: "サーバー管理", count: commandsData["サーバー管理"].length },
+    { name: "ユーティリティ", count: commandsData["ユーティリティ"].length },
+    { name: "連携", count: commandsData["連携"].length }
+  ];
+
+  const totalCommands = categories.reduce((sum, cat) => sum + cat.count, 0);
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -207,7 +224,7 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-black mb-4">
-                34種類のコマンド
+                {totalCommands}種類のコマンド
               </h2>
               <p className="text-xl text-gray-400">
                 あらゆるサーバー運営シーンに対応
@@ -215,24 +232,47 @@ export default function Home() {
             </div>
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { name: "自販機", count: 11 },
-                { name: "パネル", count: 7 },
-                { name: "モデレーション", count: 3 },
-                { name: "サーバー管理", count: 7 },
-                { name: "ユーティリティ", count: 4 },
-                { name: "連携", count: 2 }
-              ].map((cat, idx) => (
-                <div 
-                  key={idx}
-                  className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-all"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold">{cat.name}</span>
-                    <span className={`text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r ${current.gradient}`}>
-                      {cat.count}
-                    </span>
-                  </div>
+              {categories.map((cat, idx) => (
+                <div key={idx} className="space-y-4">
+                  <button
+                    onClick={() => toggleCategory(cat.name)}
+                    className="w-full p-6 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-all text-left"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-lg font-bold">{cat.name}</span>
+                      <div className="flex items-center gap-3">
+                        <span className={`text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r ${current.gradient}`}>
+                          {cat.count}
+                        </span>
+                        <svg 
+                          className={`w-5 h-5 transition-transform ${expandedCategory === cat.name ? 'rotate-180' : ''}`}
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </button>
+                  
+                  {expandedCategory === cat.name && (
+                    <div className="space-y-2 pl-2">
+                      {commandsData[cat.name as keyof typeof commandsData].map((cmd, cmdIdx) => (
+                        <div 
+                          key={cmdIdx}
+                          className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-white/10 transition-all"
+                        >
+                          <div className="font-mono text-sm text-cyan-400 mb-1">
+                            {cmd.name}
+                          </div>
+                          <div className="text-sm text-gray-400">
+                            {cmd.description}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
