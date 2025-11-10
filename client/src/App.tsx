@@ -5,14 +5,13 @@ import { Route, Router as WouterRouter, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
-import HomePro from "./pages/HomePro";
+
 
 function Router() {
   return (
     <WouterRouter base="/VENDX">
       <Switch>
         <Route path={"/"} component={Home} />
-        <Route path="/PRO" component={HomePro} />
         <Route path={"/:rest*"} component={Home} />
       </Switch>
     </WouterRouter>
@@ -28,7 +27,7 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider
-        defaultTheme="light"
+        defaultTheme="dark"
         // switchable
       >
         <TooltipProvider>
