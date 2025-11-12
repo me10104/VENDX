@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { commandsData } from "../commands-data";
+import { commandsDataStandard, commandsDataPro } from "../commands-data";
 
 type Edition = "standard" | "pro";
 
@@ -84,6 +84,8 @@ export default function Home() {
   const current = config[edition];
   const opacity = Math.min(scrollY / 300, 1);
 
+  const commandsData = edition === "standard" ? commandsDataStandard : commandsDataPro;
+  
   const categories = [
     { name: "自販機", count: commandsData["自販機"].length },
     { name: "パネル", count: commandsData["パネル"].length },
