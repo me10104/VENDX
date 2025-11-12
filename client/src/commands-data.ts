@@ -20,7 +20,7 @@ export const commandsData = {
     { name: "/役職パネル", description: "ボタンでロールを付与/削除できるパネルを作成します" },
     { name: "/チケット", description: "チケットパネルを作成します" },
     { name: "/対応状況パネル", description: "対応状況を表示するパネルを作成します" },
-    { name: "/ngワードパネル", description: "NGワードパネルを作成します" }
+    { name: "/モデレーションパネル", description: "NGワード、スパム、メンション制限、招待リンク削除などを設定できるパネルを作成します" }
   ],
   "モデレーション": [
     { name: "/ban", description: "ユーザーIDでBANを実行します" },
