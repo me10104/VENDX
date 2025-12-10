@@ -35,8 +35,8 @@ export default function Home() {
       icon: "/VENDX/icon-standard.png",
       theme: "cyan",
       gradient: "from-cyan-400 to-blue-500",
-      title: "VENDX STANDARD",
-      tagline: "Discord サーバー運営の、新しいスタンダード",
+      title: "VENDX",
+      tagline: "Discord サーバー運営を、もっと簡単に",
       features: [
         {
           label: "自販機システム",
@@ -60,21 +60,21 @@ export default function Home() {
       theme: "orange",
       gradient: "from-orange-400 to-red-500",
       title: "VENDX PRO",
-      tagline: "プロフェッショナル運営のための、プレミアム体験",
+      tagline: "サーバー運営に必要な機能を、ひとつに",
       features: [
         {
-          label: "高度なモデレーション",
-          desc: "スパム検出、メンション制限、招待リンク自動削除など、高度なサーバー保護機能を搭載。",
+          label: "自販機システム",
+          desc: "商品の販売から在庫管理まで完全自動化。PayPay連携で決済もスムーズに。",
+          note: "※販売者として使用する場合は /paypay登録 が必要です"
+        },
+        {
+          label: "パネル管理",
+          desc: "認証、役職付与、チケット管理を直感的なパネルで一元管理。",
           note: null
         },
         {
-          label: "詳細な入退室ログ",
-          desc: "誰の招待リンクから入ったかを追跡。不正な招待元を特定し、サーバーの安全性を向上。",
-          note: null
-        },
-        {
-          label: "先行アクセス & 優先サポート",
-          desc: "新機能の先行体験と専用サポートチャンネルでの優先対応。フィードバックを最優先で反映。",
+          label: "モデレーション",
+          desc: "BAN、タイムアウト、メッセージ削除など、サーバーの秩序を保つ強力なツール。",
           note: null
         }
       ]

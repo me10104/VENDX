@@ -20,7 +20,7 @@ export const commandsDataStandard = {
     { name: "/役職パネル", description: "ボタンでロールを付与/削除できるパネルを作成します" },
     { name: "/チケット", description: "チケットパネルを作成します" },
     { name: "/対応状況パネル", description: "対応状況を表示するパネルを作成します" },
-    { name: "/ngワードパネル", description: "NGワードパネルを作成します" }
+    { name: "/ワードパネル", description: "ワードパネルを作成します" }
   ],
   "モデレーション": [
     { name: "/ban", description: "ユーザーIDでBANを実行します" },
@@ -70,7 +70,7 @@ export const commandsDataPro = {
     { name: "/役職パネル", description: "ボタンでロールを付与/削除できるパネルを作成します" },
     { name: "/チケット", description: "チケットパネルを作成します" },
     { name: "/対応状況パネル", description: "対応状況を表示するパネルを作成します" },
-    { name: "/モデレーションパネル", description: "NGワード、スパム検出、メンション制限、招待リンク削除などを設定できる高度なモデレーションパネルを作成します" }
+    { name: "/ワードパネル", description: "ワードパネルを作成します" }
   ],
   "モデレーション": [
     { name: "/ban", description: "ユーザーIDでBANを実行します" },
@@ -78,7 +78,7 @@ export const commandsDataPro = {
     { name: "/メッセージ削除", description: "指定した数のメッセージを削除します" }
   ],
   "サーバー管理": [
-    { name: "/ログ設定", description: "各種ログの送信先を設定します（PRO版では招待元追跡機能付き）" },
+    { name: "/ログ設定", description: "各種ログの送信先を設定します" },
     { name: "/自動ロール付与", description: "サーバー参加時に自動でロールを付与します" },
     { name: "/一括ロール付与", description: "サーバーの全メンバーに指定したロールを付与します" },
     { name: "/カテゴリー複製", description: "指定したカテゴリーの設定をそのまま複製します" },
