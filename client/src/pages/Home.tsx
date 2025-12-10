@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { commandsDataStandard, commandsDataPro } from "../commands-data";
+import { commandsDataStandard, commandsDataPro, commandsDataPrime } from "../commands-data";
 
-type Edition = "standard" | "pro";
+type Edition = "standard" | "pro" | "prime";
 
 export default function Home() {
   const [edition, setEdition] = useState<Edition>("standard");
@@ -11,7 +11,8 @@ export default function Home() {
   
   const inviteUrls = {
     standard: "https://discord.com/oauth2/authorize?client_id=1422959102300127292&permissions=8&integration_type=0&scope=bot",
-    pro: "https://discord.com/oauth2/authorize?client_id=1422959680363171970&permissions=8&integration_type=0&scope=bot"
+    pro: "https://discord.com/oauth2/authorize?client_id=1422959680363171970&permissions=8&integration_type=0&scope=bot",
+    prime: "https://discord.com/oauth2/authorize?client_id=1400854366344450171&permissions=8&integration_type=0&scope=bot"
   };
   
   const inviteUrl = inviteUrls[edition];
@@ -23,7 +24,11 @@ export default function Home() {
   }, []);
 
   const toggleEdition = () => {
-    setEdition(prev => prev === "standard" ? "pro" : "standard");
+    setEdition(prev => {
+      if (prev === "standard") return "pro";
+      if (prev === "pro") return "prime";
+      return "standard";
+    });
   };
 
   const toggleCategory = (categoryName: string) => {
@@ -78,13 +83,37 @@ export default function Home() {
           note: null
         }
       ]
+    },
+    prime: {
+      icon: "/VENDX/icon-prime.png",
+      theme: "purple",
+      gradient: "from-purple-400 to-pink-500",
+      title: "VENDX PRIME",
+      tagline: "次世代のサーバー管理体験",
+      features: [
+        {
+          label: "自販機システム",
+          desc: "商品の販売から在庫管理まで完全自動化。PayPay連携で決済もスムーズに。",
+          note: "※販売者として使用する場合は /paypay登録 が必要です"
+        },
+        {
+          label: "パネル管理",
+          desc: "認証、役職付与、チケット管理を直感的なパネルで一元管理。",
+          note: null
+        },
+        {
+          label: "モデレーション",
+          desc: "BAN、タイムアウト、メッセージ削除など、サーバーの秩序を保つ強力なツール。",
+          note: null
+        }
+      ]
     }
   };
 
   const current = config[edition];
   const opacity = Math.min(scrollY / 300, 1);
 
-  const commandsData = edition === "standard" ? commandsDataStandard : commandsDataPro;
+  const commandsData = edition === "standard" ? commandsDataStandard : edition === "pro" ? commandsDataPro : commandsDataPrime;
   
   const categories = [
     { name: "自販機", count: commandsData["自販機"].length },
@@ -106,7 +135,7 @@ export default function Home() {
           style={{ transform: `scale(${1 + scrollY * 0.0005})` }}
         />
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 50% 50%, ${current.theme === 'cyan' ? '#06b6d420' : '#f9731620'} 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(circle at 50% 50%, ${current.theme === 'cyan' ? '#06b6d420' : current.theme === 'orange' ? '#f9731620' : '#a855f720'} 1px, transparent 1px)`,
           backgroundSize: '40px 40px',
           transform: `translateY(${scrollY * 0.3}px)`
         }} />
