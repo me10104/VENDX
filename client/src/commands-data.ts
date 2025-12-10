@@ -150,7 +150,8 @@ export const commandsDataPrime = {
     { name: "/カスタムメッセージ", description: "指定したメッセージをボットが送信します" },
     { name: "/カウント", description: "現在のチャンネルのメッセージ数をカウントします" },
     { name: "/抽選", description: "抽選企画の管理" },
-    { name: "/投票", description: "投票・アンケートを作成します" }
+    { name: "/投票", description: "投票・アンケートを作成します" },
+    { name: "/スロット", description: "スロットチャンネルを作成します" }
   ],
   "連携": [
     { name: "/ユーザー情報", description: "指定したユーザーの情報を表示します" },
